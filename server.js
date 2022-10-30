@@ -120,6 +120,7 @@ io.on("connection",(socket)=>{
         io.emit("game-won",data.nextMove);
         return;
       }
+      else
       socket.broadcast.emit("move-played-from-backend",{arr,nextMove:data.nextMove,chance:true});
     })
 
