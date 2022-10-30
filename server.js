@@ -116,8 +116,8 @@ io.on("connection",(socket)=>{
       if(checkForWin(data.num,(data.nextMove=="X")?"O":"X")){
         socket.broadcast.emit("move-played-from-backend",{arr,nextMove:data.nextMove,chance:false});
         // socket.emit("game-won",(data.nextMove=="X")?"O":"X");
-        io.emit("game-won",(data.nextMove=="X")?"O":"X");
-        // io.emit("game-won",data.nextMove);
+        // io.emit("game-won",(data.nextMove=="X")?"O":"X");
+        io.emit("game-won",data.nextMove);
         return;
       }
       socket.broadcast.emit("move-played-from-backend",{arr,nextMove:data.nextMove,chance:true});
