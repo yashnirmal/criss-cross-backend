@@ -113,15 +113,14 @@ io.on("connection",(socket)=>{
 
     socket.on("move-played-to-backend",(data)=>{
       arr[data.num-1]=(data.nextMove=="X")?"O":"X";
+      socket.broadcast.emit("move-played-from-backend",{arr,nextMove:data.nextMove,chance:true});
       if(checkForWin(data.num,(data.nextMove=="X")?"O":"X")){
-        socket.broadcast.emit("move-played-from-backend",{arr,nextMove:data.nextMove,chance:false});
+        // socket.broadcast.emit("move-played-from-backend",{arr,nextMove:data.nextMove,chance:false});
         // socket.emit("game-won",(data.nextMove=="X")?"O":"X");
         // io.emit("game-won",(data.nextMove=="X")?"O":"X");
         io.emit("game-won",data.nextMove);
-        return;
       }
-      else
-      socket.broadcast.emit("move-played-from-backend",{arr,nextMove:data.nextMove,chance:true});
+      
     })
 
     socket.on("join-room",(room)=>{
