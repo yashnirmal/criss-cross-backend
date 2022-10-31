@@ -118,7 +118,7 @@ io.on("connection",(socket)=>{
         // socket.broadcast.emit("move-played-from-backend",{arr,nextMove:data.nextMove,chance:false});
         // socket.emit("game-won",(data.nextMove=="X")?"O":"X");
         // io.emit("game-won",(data.nextMove=="X")?"O":"X");
-        io.emit("game-won",data.nextMove);
+        io.emit("game-won",{data.name});
       }
       
     })
