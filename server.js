@@ -175,8 +175,8 @@ app.get("/user",(req,res)=>{
 })
 
 app.get("/score",(req,res)=>{
-  e = req.query
-
+  let e = req.query
+  console.log(e)
   User.findOne(e,(err,data)=>{
     if (err) {
       res.status(500).send({
@@ -195,9 +195,11 @@ app.get("/score",(req,res)=>{
 })
 
 app.post("/score",(req,res)=>{
-  e = req.query
-
-  User.updateOne(e,(err,data)=>{
+  let e = req.query
+  let w = req.body.wins
+  let l = req.body.losses
+  console.log(e,w,l)
+  User.updateOne(e,{$set:{wins:w,losses:l}},(err,data)=>{
     if (err) {
       res.status(500).send({
           status: "error",
