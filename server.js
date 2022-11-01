@@ -210,7 +210,7 @@ app.post("/score",(req,res)=>{
       if (!data) {
         res.status(500).send({ status: "error", msg: "user not found" });
       }
-      res.status(200).send({ status: "ok", msg: "found", data: {wins:data.wins,losses:data.losses,name:data.name}});
+      res.status(200).send({ status: "ok", msg: "user score updated"});
     }
   })
 
